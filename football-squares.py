@@ -15,9 +15,9 @@ class PlayersAndCountsParamType(click.ParamType):
 
         try:
             player, count = value.split(",")
-        except TypeError:
+        except ValueError:
             self.fail(
-                f"Unable to parse name and number for {value}. Are there two parts?",
+                f"Unable to parse name and number for \"{value}\". Are there two parts?",
                 param,
                 ctx,
             )
@@ -25,21 +25,19 @@ class PlayersAndCountsParamType(click.ParamType):
         try:
             return player, int(count)
         except ValueError:
-            self.fail(f"Count {count} is not a valid whole number")
+            self.fail(f"Count \"{count}\" is not a valid whole number")
 
 
 @click.command()
 @click.option(
     "-t",
     "--teams",
-    # metavar="<text, text>",
     type=(str, str),
     help="The two teams that are competing",
 )
 @click.option(
     "-p",
     "--players",
-    # metavar="<text,number>",
     type=PlayersAndCountsParamType(),
     multiple=True,
     help="List of players and their number of squares separated by a comma "
@@ -47,7 +45,7 @@ class PlayersAndCountsParamType(click.ParamType):
     "in if there are not 100 squares."
     'Ex: -p Nick,10 -p "Slappy O\'Houlihan,20"',
 )
-def build_squares(teams: Tuple[str, str], players: Iterable[str]) -> None:
+def build_squares(teams: Tuple[str, str], players: Iterable[Tuple[str, int]]) -> None:
     """
     Small command line utility to create a random tables of football squares.
     Team along the top will be the table header. Other team is omitted.
