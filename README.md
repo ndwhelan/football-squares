@@ -26,4 +26,4 @@ Options:
   --help                       Show this message and exit.
 ```
 
-Requires Python 3.6 or greater. `init.sh` will set things up if you have `pyenv` installed.
+Requires Python 3.6 or greater. `init.sh` will set things up if you have `pyenv` installed, and the dependencies in `requirements.txt`. Admittedly, it could use a `setup.py`.
