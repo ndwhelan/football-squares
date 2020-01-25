@@ -2,6 +2,12 @@
 
 Run with `python football-squares.py --help` for instructions.
 
+Example run, with 100 "buys":
+
+```
+python football-sqaures.py -t Chiefs 49ers -p Nick,10 -p Joe,10 -p Bob,10 -p Jane,10 -p Rose,10 -p Jack,10 -p Jill,10 -p Joan,10 -p Brad,10 -p Katy,10
+```
+
 ### Help Output
 
 ```
@@ -19,3 +25,5 @@ Options:
                                Nick,10 -p "Slappy O'Houlihan,20"
   --help                       Show this message and exit.
 ```
+
+Requires Python 3.6 or greater. `init.sh` will set things up if you have `pyenv` installed.
